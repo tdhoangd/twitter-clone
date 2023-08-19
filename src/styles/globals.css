@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+  }
+}
+
+/* Themes */
+:root {
+  /* light */
+  /* --background: rgb(255, 255, 255);
+  --background-secondary: rgb(245, 247, 247);
+  --background-search: rgb(235, 240, 241);
+  --hover: rgb(245, 245, 245);
+  --hover-secondary: rgb(235, 238, 238);
+  --primary-dark: rgb(0, 0, 0);
+  --primary-light: rgb(66, 81, 94);  */
+
+  /* dark */
+  --background: rgb(0, 0, 0);
+  --background-secondary: rgb(22, 23, 26);
+  --background-search: rgb(24, 27, 29);
+  --hover: rgb(23, 23, 23);
+  --hover-secondary: rgb(27, 29, 32);
+  --primary-dark: rgb(255, 255, 255);
+  --primary-light: rgb(94, 99, 104);
+
+  --accent-dark: theme("colors.sky.500");
+  --accent-light: theme("colors.sky.300");
+}
+
+[data-theme="light"] {
+  --background: rgb(255, 255, 255);
+  --background-secondary: rgb(245, 247, 247);
+  --background-search: rgb(235, 240, 241);
+
+  --hover: rgb(245, 245, 245);
+  --hover-secondary: rgb(235, 238, 238);
+
+  /* text color */
+  --primary-dark: rgb(0, 0, 0);
+  /* small text */
+  --primary-light: rgb(66, 81, 94);
+}
+
+[data-theme="dim"] {
+  --background: rgb(17, 24, 32);
+  --background-secondary: rgb(23, 29, 38);
+  --background-search: rgb(29, 38, 49);
+
+  /* hover */
+  --hover: rgb(21, 29, 38);
+  --hover-secondary: rgb(28, 35, 42);
+
+  /* text color */
+  --primary-dark: rgb(255, 255, 255);
+  /* small text */
+  --primary-light: rgb(121, 133, 148);
+}
+
+[data-theme="dark"] {
+  --background: rgb(0, 0, 0);
+  --background-secondary: rgb(22, 23, 26);
+  --background-search: rgb(24, 27, 29);
+  --hover: rgb(23, 23, 23);
+  --hover-secondary: rgb(27, 29, 32);
+  --primary-dark: rgb(255, 255, 255);
+  --primary-light: rgb(94, 99, 104);
+}
+
+/* Accent colors */
+[data-accent="blue"] {
+  --accent-dark: theme("colors.sky.500");
+  --accent-light: theme("colors.sky.300");
+}
+
+[data-accent="yellow"] {
+  --accent-dark: theme("colors.yellow.500");
+  --accent-light: theme("colors.yellow.200");
+}
+
+[data-accent="pink"] {
+  --accent-dark: theme("colors.pink.600");
+  --accent-light: theme("colors.pink.300");
+}
+
+[data-accent="purple"] {
+  --accent-dark: theme("colors.violet.600");
+  --accent-light: theme("colors.violet.200");
+}
+
+[data-accent="orange"] {
+  --accent-dark: theme("colors.orange.500");
+  --accent-light: theme("colors.orange.300");
+}
+
+[data-accent="green"] {
+  --accent-dark: theme("colors.emerald.500");
+  --accent-light: theme("colors.emerald.200");
+}
+
+/* Styles */
+
+html,
+body {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  border: 0px solid black;
+}
+
+/* body {
+  margin: 0;
+  @apply grid grid-flow-col justify-stretch gap-4;
+} */
+
+/* div {
+} */
