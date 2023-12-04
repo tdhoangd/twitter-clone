@@ -1,6 +1,11 @@
 import { BiBell, BiBookmark, BiHomeCircle, BiUser } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
-import { HiOutlineDotsCircleHorizontal, HiOutlineMail } from "react-icons/hi";
+import {
+  HiOutlineDotsCircleHorizontal,
+  HiOutlineMail,
+  HiOutlineClipboardList,
+} from "react-icons/hi";
+import { MdGroup } from "react-icons/md";
 import NavItem from "./nav-item";
 
 const NAVIGATION_ITEMS = [
@@ -21,8 +26,16 @@ const NAVIGATION_ITEMS = [
     icon: HiOutlineMail,
   },
   {
+    title: "lists",
+    icon: HiOutlineClipboardList,
+  },
+  {
     title: "Bookmarks",
     icon: BiBookmark,
+  },
+  {
+    title: "Communities",
+    icon: MdGroup,
   },
   {
     title: "Profile",

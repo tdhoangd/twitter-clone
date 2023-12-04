@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { BsSearch } from "react-icons/bs";
 import { MdClear } from "react-icons/md";
 
-export default function SearchBar() {
+export function SearchBar() {
   const [searchValue, setSearchValue] = useState("");
   const [inputFocus, setInputFocus] = useState(false);
   const containerRef = useRef(null);
@@ -31,13 +31,13 @@ export default function SearchBar() {
 
   return (
     <div
-      className={`group flex items-center justify-between gap-4 rounded-full bg-th-background-secondary p-3
-        transition border border-th-background
-        focus-within:border-th-accent-dark focus-within:bg-th-background`}
+      className={`group flex items-center justify-between gap-4 rounded-full bg-cc-bg-secondary p-3
+        transition border border-cc-bg-primary
+        focus-within:border-cc-accent focus-within:bg-cc-bg-primary`}
       ref={containerRef}
     >
       <div
-        className={`ml-3 p-1 text-th-primary-light group-focus-within:text-th-accent-dark`}
+        className={`ml-3 p-1 text-cc-text-secondary group-focus-within:text-cc-accent`}
       >
         <BsSearch className={`h-5 w-5`} />
       </div>
@@ -54,7 +54,7 @@ export default function SearchBar() {
 
         {searchValue && inputFocus && (
           <div
-            className={`rounded-full bg-th-accent-dark text-th-primary-light p-1`}
+            className={`rounded-full bg-cc-accent text-cc-text-secondary p-1`}
             onClick={handleClearInput}
           >
             <MdClear className={`w-4 h-4`} />
@@ -64,3 +64,4 @@ export default function SearchBar() {
     </div>
   );
 }
+

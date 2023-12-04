@@ -1,6 +1,6 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/helpers";
 
-export default function Loading({ className, position, ...props }) {
+function Loading({ className, position, ...props }) {
   return (
     <div className={position ? `text-[${position}]` : `text-center`}>
       <div role="status">
@@ -28,3 +28,5 @@ export default function Loading({ className, position, ...props }) {
     </div>
   );
 }
+
+export default Loading;

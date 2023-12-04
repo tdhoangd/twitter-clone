@@ -1,12 +1,11 @@
 "use client";
-import { createRef, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Loading from "../loading";
 import Error from "../error";
-import TrendingCardDropdownMenu from "./trending-card-dropdown-menu";
 import { TrendingCard } from "./trending-card";
 import Link from "next/link";
 
-export default function TrendingNews() {
+export function TrendingNews() {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -43,7 +42,7 @@ export default function TrendingNews() {
       setData(fakeData);
       // setData(null);
       setIsLoading(false);
-    }, 100);
+    }, 1);
   }, []);
 
   const handleNotInterested = (id) => {
@@ -59,7 +58,7 @@ export default function TrendingNews() {
   return (
     <div>
       <div
-        className={`fi rounded-2xl bg-th-background-secondary overflow-hidden`}
+        className={`fi rounded-2xl bg-cc-bg-secondary overflow-hidden`}
       >
         {isLoading ? (
           <Loading />
@@ -81,7 +80,7 @@ export default function TrendingNews() {
 
             <Link
               href={"/explore/tabs/for-you"}
-              className={`px-5 py-3 outline-none text-lg text-th-accent-dark hover:bg-th-hover-secondary`}
+              className={`px-5 py-3 outline-none text-cc-accent hover:bg-cc-hover-secondary`}
             >
               <span className="w-full">Show more</span>
             </Link>
@@ -93,3 +92,4 @@ export default function TrendingNews() {
     </div>
   );
 }
+

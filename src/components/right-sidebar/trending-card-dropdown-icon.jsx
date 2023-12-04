@@ -1,6 +1,6 @@
 import { BsThreeDots } from "react-icons/bs";
 
-export default function TrendingCardDropdownIcon() {
+function TrendingCardDropdownIcon() {
   return (
     // <div className={`top-1 absolute right-0`}>
     <div className={`ml-6`}>
@@ -19,3 +19,5 @@ export default function TrendingCardDropdownIcon() {
     //{/* </div> */}
   );
 }
+
+export default TrendingCardDropdownIcon;

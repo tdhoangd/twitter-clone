@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   content: [
@@ -19,15 +20,36 @@ module.exports = {
     },
     extend: {
       colors: {
-        "th-background": "var(--background)",
-        "th-background-secondary": "var(--background-secondary)",
-        "th-background-search": "var(--background-search)",
-        "th-hover": "var(--hover)",
-        "th-hover-secondary": "var(--hover-secondary)",
-        "th-accent-dark": "var(--accent-dark)",
-        "th-accent-light": "var(--accent-light)",
-        "th-primary-dark": "var(--primary-dark)",
-        "th-primary-light": "var(--primary-light)",
+        // 'cc-': 'rgb(var(--color-) / <alpha-value>)',
+        'cc-bg-primary': 'rgb(var(--cc-bg-primary) / <alpha-value>)',
+        'cc-bg-secondary': 'rgb(var(--cc-bg-secondary) / <alpha-value>)',
+        'cc-text-primary': 'rgb(var(--cc-text-primary) / <alpha-value>)',
+        'cc-text-secondary': 'rgb(var(--cc-text-secondary) / <alpha-value>)',
+        'cc-text-tertiary': 'rgb(var(--cc-text-tertiary) / <alpha-value>)',
+        'cc-hover-primary': 'rgb(var(--cc-hover-primary) / <alpha-value>)',
+        'cc-hover-secondary': 'rgb(var(--cc-hover-secondary) / <alpha-value>)',
+        'cc-backdrop': 'rgb(var(--cc-backdrop) / <alpha-value>)',
+        'cc-accent': 'rgb(var(--cc-accent) / <alpha-value>)',
+        'cc-accent-inv': 'rgb(var(--cc-accent-inv) / <alpha-value>)',
+        // 'th-background': 'rgb(var(--background) / <alpha-value>)',
+        // 'th-background-secondary': 'rgb(var(--background-secondary) / <alpha-value>)',
+        // 'th-background-search': 'rgb(var(--background-search) / <alpha-value>)',
+        // 'th-hover': 'rgb(var(--hover) / <alpha-value>)',
+        // 'th-hover-secondary': 'rgb(var(--hover-secondary) / <alpha-value>)',
+        // 'th-primary-dark': 'rgb(var(--primary-dark) / <alpha-value>)',
+        // 'th-primary-light': 'rgb(var(--primary-light) / <alpha-value>)',
+        // 'th-accent-dark': colors.sky[500], // Directly use Tailwind's color
+        // 'th-accent-light': colors.sky[300], // Directly use Tailwind's color
+        // "th-background": "rgb(var(--background)",
+        // "th-background-secondary": "var(--background-secondary)",
+        // "th-background-search": "var(--background-search)",
+        // "th-backdrop": "var(--backdrop)",
+        // "th-hover": "var(--hover)",
+        // "th-hover-secondary": "var(--hover-secondary)",
+        // "th-accent-dark": "var(--accent-dark)",
+        // "th-accent-light": "var(--accent-light)",
+        // "th-primary-dark": "var(--primary-dark)",
+        // "th-primary-light": "var(--primary-light)",
       },
       boxShadow: {
         uniform: "0 0 10px 0",

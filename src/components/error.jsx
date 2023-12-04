@@ -1,6 +1,6 @@
 import { BsExclamationTriangle } from "react-icons/bs";
 
-export default function Error({ message }) {
+function Error({ message }) {
   return (
     <div
       className={`fi items-center justify-center gap-4 py-5 px-3 text-th-primary-light`}
@@ -12,3 +12,5 @@ export default function Error({ message }) {
     </div>
   );
 }
+
+export default Error;

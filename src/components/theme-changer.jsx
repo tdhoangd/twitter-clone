@@ -1,6 +1,6 @@
 "use client";
 
-import { useTheme } from "@/hooks/use-theme";
+import { useTheme } from "@/features/theme";
 
 function ThemeChanger() {
   const { theme, setTheme, accent, setAccent } = useTheme();

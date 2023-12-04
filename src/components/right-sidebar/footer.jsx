@@ -1,6 +1,10 @@
 "use client";
 import Link from "next/link";
 import * as DropdownMenu from "@radix-ui/react-Dropdown-menu";
+import {
+  DropdownContentLayout,
+  DropdownItemLayout,
+} from "../layouts/dropdown-layouts";
 
 const FOOTER_LINKS = [
   { name: "Terms of Service", url: "/", isDropDown: false },
@@ -46,10 +50,10 @@ const FOOTER_LINKS = [
   },
 ];
 
-export default function Footer() {
+export function Footer() {
   return (
     <div className={`fi mb-5 overflow-hidden`}>
-      <nav className={`px-5 text-th-primary-light flex flex-wrap text-sm`}>
+      <nav className={`px-5 text-cc-text-secondary flex flex-wrap text-xs`}>
         {FOOTER_LINKS.map(
           (item, index) =>
             !item.isDropDown && (
@@ -70,27 +74,16 @@ export default function Footer() {
               </span>
             </DropdownMenu.Trigger>
             <DropdownMenu.Portal>
-              <DropdownMenu.Content
-                sideOffset={-15}
-                className={`rounded-xl bg-th-background  shadow-uniform shadow-th-primary-light `}
-              >
+              <DropdownContentLayout>
                 {FOOTER_LINKS.map(
                   (item, index) =>
                     item.isDropDown && (
-                      <DropdownMenu.Item
-                        key={index}
-                        className={`
-                        group flex items-center relative data-[highlighted] data-[disabled]:pointer-events-none
-                        hover:bg-th-background-secondary outline-none px-5 py-3 font-bold
-                        `}
-                      >
-                        <span className={`break-words text-lg`}>
-                          {item.name}
-                        </span>
-                      </DropdownMenu.Item>
+                      <DropdownItemLayout key={index}>
+                        <span className={`break-words`}>{item.name}</span>
+                      </DropdownItemLayout>
                     )
                 )}
-              </DropdownMenu.Content>
+              </DropdownContentLayout>
             </DropdownMenu.Portal>
           </DropdownMenu.Root>
         </div>
@@ -102,3 +95,4 @@ export default function Footer() {
     </div>
   );
 }
+

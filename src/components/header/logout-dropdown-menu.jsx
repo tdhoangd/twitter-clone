@@ -1,5 +1,9 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import Hero from "./hero";
+import {
+  DropdownContentLayout,
+  DropdownItemLayout,
+} from "../layouts/dropdown-layouts";
 
 function LogoutDropdownMenu() {
   return (
@@ -11,28 +15,18 @@ function LogoutDropdownMenu() {
           </button>
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>
-          <DropdownMenu.Content
-            sideOffset={10}
-            className={`!rounded-xl bg-th-background shadow-uniform shadow-th-primary-light overflow-hidden w-[300px] py-3`}
-          >
-            <DropdownMenu.Item
-              className={`group flex items-center data-[highlighted] font-semibold text-lg
-            data-[disabled]:pointer-events-none hover:bg-th-background-secondary outline-none px-5 py-3`}
-            >
-              <button className={`flex items-center justify-start`}>
+          <DropdownContentLayout sideOffset={10} className={`py-3 w-[300px]`}>
+            <DropdownItemLayout>
+              <div className={`flex items-center justify-start`}>
                 <span>Add an existing account</span>
-              </button>
-            </DropdownMenu.Item>
-
-            <DropdownMenu.Item
-              className={` group flex items-center relative data-[highlighted] font-semibold text-lg
-            data-[disabled]:pointer-events-none hover:bg-th-background-secondary outline-none px-5 py-3`}
-            >
-              <button className={`flex items-center justify-start`}>
+              </div>
+            </DropdownItemLayout>
+            <DropdownItemLayout>
+              <div className={`flex items-center justify-start`}>
                 <span>Log out @username</span>
-              </button>
-            </DropdownMenu.Item>
-          </DropdownMenu.Content>
+              </div>
+            </DropdownItemLayout>
+          </DropdownContentLayout>
         </DropdownMenu.Portal>
       </DropdownMenu.Root>
     </div>

@@ -8,7 +8,7 @@ function NavItem({ title, icon }) {
       className={`pt-1 w-full flex`}
     >
       <div
-        className={`p-3 flex justify-start items-center rounded-full hover:bg-th-hover`}
+        className={`p-3 flex justify-start items-center rounded-full hover:bg-cc-hover-primary`}
       >
         <div>{icon}</div>
         <div className={`mx-4 text-lg hidden xl:block`}>{title}</div>
