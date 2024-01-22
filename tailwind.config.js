@@ -1,7 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 
-const defaultTheme = require("tailwindcss/defaultTheme");
-const colors = require('tailwindcss/colors');
+// const defaultTheme = require("tailwindcss/defaultTheme");
+// const colors = require("tailwindcss/colors");
+// const { nextui } = require("@nextui-org/react");
 
 module.exports = {
   content: [
@@ -9,47 +10,75 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: false,
+  darkMode: "media",
   theme: {
     screens: {
+      mobile: { max: "499px", min: "0px" },
+      // 'mobile': '1px',
       xs: "500px",
-      "2sm": "670px",
-      "2md": "990px",
-      "2lg": "1080px",
-      ...defaultTheme.screens,
+      sm: "600px",
+      "2sm": "688px",
+      md: "988px",
+      lg: "1024px",
+      xl: "1078px",
+      "2xl": "1265px",
+      "3xl": "1385px",
+      // ...defaultTheme.screens,
     },
+
     extend: {
+      fontSize: {
+        base: "15px",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
+        disco: {
+          "0%": { transform: "translateY(-50%) rotate(0deg)" },
+          "100%": { transform: "translateY(-50%) rotate(360deg)" },
+        },
+        spin: {
+          from: {
+            transform: "rotate(0deg)",
+          },
+          to: {
+            transform: "rotate(360deg)",
+          },
+        },
+        endless: {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-245px)" },
+        },
+      },
+      animation: {
+        endless: "endless 20s linear infinite",
+
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        disco: "disco 1.5s linear infinite",
+        "spin-forward": "spin 2s linear infinite",
+      },
       colors: {
-        // 'cc-': 'rgb(var(--color-) / <alpha-value>)',
-        'cc-bg-primary': 'rgb(var(--cc-bg-primary) / <alpha-value>)',
-        'cc-bg-secondary': 'rgb(var(--cc-bg-secondary) / <alpha-value>)',
-        'cc-text-primary': 'rgb(var(--cc-text-primary) / <alpha-value>)',
-        'cc-text-secondary': 'rgb(var(--cc-text-secondary) / <alpha-value>)',
-        'cc-text-tertiary': 'rgb(var(--cc-text-tertiary) / <alpha-value>)',
-        'cc-hover-primary': 'rgb(var(--cc-hover-primary) / <alpha-value>)',
-        'cc-hover-secondary': 'rgb(var(--cc-hover-secondary) / <alpha-value>)',
-        'cc-backdrop': 'rgb(var(--cc-backdrop) / <alpha-value>)',
-        'cc-accent': 'rgb(var(--cc-accent) / <alpha-value>)',
-        'cc-accent-inv': 'rgb(var(--cc-accent-inv) / <alpha-value>)',
-        // 'th-background': 'rgb(var(--background) / <alpha-value>)',
-        // 'th-background-secondary': 'rgb(var(--background-secondary) / <alpha-value>)',
-        // 'th-background-search': 'rgb(var(--background-search) / <alpha-value>)',
-        // 'th-hover': 'rgb(var(--hover) / <alpha-value>)',
-        // 'th-hover-secondary': 'rgb(var(--hover-secondary) / <alpha-value>)',
-        // 'th-primary-dark': 'rgb(var(--primary-dark) / <alpha-value>)',
-        // 'th-primary-light': 'rgb(var(--primary-light) / <alpha-value>)',
-        // 'th-accent-dark': colors.sky[500], // Directly use Tailwind's color
-        // 'th-accent-light': colors.sky[300], // Directly use Tailwind's color
-        // "th-background": "rgb(var(--background)",
-        // "th-background-secondary": "var(--background-secondary)",
-        // "th-background-search": "var(--background-search)",
-        // "th-backdrop": "var(--backdrop)",
-        // "th-hover": "var(--hover)",
-        // "th-hover-secondary": "var(--hover-secondary)",
-        // "th-accent-dark": "var(--accent-dark)",
-        // "th-accent-light": "var(--accent-light)",
-        // "th-primary-dark": "var(--primary-dark)",
-        // "th-primary-light": "var(--primary-light)",
+        "color-bg": "rgb(var(--color-bg) / <alpha-value>)",
+        "color-bg-2": "rgb(var(--color-bg-2) / <alpha-value>)",
+        "color-bg-3": "rgb(var(--color-bg-3) / <alpha-value>)",
+        "color-text-main": "rgb(var(--color-text-main) / <alpha-value>)",
+        "color-text-dimmed": "rgb(var(--color-text-dimmed) / <alpha-value>)",
+        "color-border": "rgb(var(--color-border) / <alpha-value>)",
+        "color-dark": "rgb(var(--color-dark) / <alpha-value>)",
+        "color-backdrop": "rgb(var(--color-backdrop) / <alpha-value>)",
+        "color-blue": "rgb(var(--color-blue) / <alpha-value>)",
+        "color-green": "rgb(var(--color-green) / <alpha-value>)",
+        "color-red": "rgb(var(--color-red) / <alpha-value>)",
+
+        "color-accent": "rgb(var(--color-accent) / <alpha-value>)",
+        "color-accent-hover": "rgb(var(--color-accent-hover) / <alpha-value>)",
       },
       boxShadow: {
         uniform: "0 0 10px 0",

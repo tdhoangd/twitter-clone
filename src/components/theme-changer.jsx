@@ -6,7 +6,7 @@ function ThemeChanger() {
   const { theme, setTheme, accent, setAccent } = useTheme();
 
   return (
-    <div className={`bg-th-background-secondary text-th-primary-dark p-3`}>
+    <div className={`bg-color-bg text-color-text-main p-3`}>
       <label>
         Select Theme:
         <select value={theme} onChange={(e) => setTheme(e.target.value)}>
@@ -18,10 +18,10 @@ function ThemeChanger() {
       <label>
         Select Accent:
         <select value={accent} onChange={(e) => setAccent(e.target.value)}>
+          <option value="purple">Purple</option>
           <option value="blue">Blue</option>
           <option value="yellow">Yellow</option>
-          <option value="pink">Pink</option>
-          <option value="purple">Purple</option>
+          <option value="red">Pink</option>
           <option value="orange">Orange</option>
           <option value="green">Green</option>
         </select>

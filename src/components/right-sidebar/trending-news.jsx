@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import Loading from "../loading";
+import { Loading } from "../ui/loading";
 import Error from "../error";
 import { TrendingCard } from "./trending-card";
 import Link from "next/link";
@@ -57,17 +57,15 @@ export function TrendingNews() {
 
   return (
     <div>
-      <div
-        className={`fi rounded-2xl bg-cc-bg-secondary overflow-hidden`}
-      >
+      <div className="rounded-2xl bg-color-bg-2 overflow-hidden">
         {isLoading ? (
           <Loading />
         ) : !data ? (
           <Error />
         ) : (
           <>
-            <div className={`fi px-5 py-3 outline-none`}>
-              <h2 className={`text-xl font-bold`}>What&apos;s happening</h2>
+            <div className="fi px-5 py-3 outline-none">
+              <h2 className="text-xl font-bold">What&apos;s happening</h2>
             </div>
             {data.map((item, index) => (
               <TrendingCard
@@ -80,7 +78,7 @@ export function TrendingNews() {
 
             <Link
               href={"/explore/tabs/for-you"}
-              className={`px-5 py-3 outline-none text-cc-accent hover:bg-cc-hover-secondary`}
+              className={`px-5 py-3 outline-none text-color-accent hover:bg-cc-hover-secondary`}
             >
               <span className="w-full">Show more</span>
             </Link>
@@ -93,3 +91,7 @@ export function TrendingNews() {
   );
 }
 
+// TrendingNewsSection
+//  - NewList
+//    - TrendingCard
+//      - NewsTopicLabel + NewsLink

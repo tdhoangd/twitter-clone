@@ -1,10 +1,11 @@
 "use client";
 import Link from "next/link";
-import * as DropdownMenu from "@radix-ui/react-Dropdown-menu";
 import {
-  DropdownContentLayout,
-  DropdownItemLayout,
-} from "../layouts/dropdown-layouts";
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdonw-menu";
 
 const FOOTER_LINKS = [
   { name: "Terms of Service", url: "/", isDropDown: false },
@@ -52,47 +53,62 @@ const FOOTER_LINKS = [
 
 export function Footer() {
   return (
-    <div className={`fi mb-5 overflow-hidden`}>
-      <nav className={`px-5 text-cc-text-secondary flex flex-wrap text-xs`}>
+    <div className="fi mb-5 overflow-hidden">
+      <nav className="px-5 text-color-text-dimmed flex flex-wrap text-xs">
         {FOOTER_LINKS.map(
           (item, index) =>
             !item.isDropDown && (
               <Link
                 key={index}
                 href={item.url}
-                className={`break-words my-[2px] pr-3 `}
+                className="break-words my-[2px] pr-3"
               >
-                <button className={`break-words `}>{item.name}</button>
+                <button className="break-words">{item.name}</button>
               </Link>
             )
         )}
-        <div className={`break-words my-[2px] pr-3`}>
-          <DropdownMenu.Root>
-            <DropdownMenu.Trigger asChild>
-              <span className={`break-words hover:cursor-pointer`}>
-                More ...
-              </span>
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Portal>
-              <DropdownContentLayout>
-                {FOOTER_LINKS.map(
-                  (item, index) =>
-                    item.isDropDown && (
-                      <DropdownItemLayout key={index}>
-                        <span className={`break-words`}>{item.name}</span>
-                      </DropdownItemLayout>
-                    )
-                )}
-              </DropdownContentLayout>
-            </DropdownMenu.Portal>
-          </DropdownMenu.Root>
+        <div className="break-words my-[2px] pr-3">
+          {/*<DropdownMenu.Root>*/}
+          {/*  <DropdownMenu.Trigger asChild>*/}
+          {/*    <span className="break-words hover:cursor-pointer">*/}
+          {/*      More ...*/}
+          {/*    </span>*/}
+          {/*  </DropdownMenu.Trigger>*/}
+          {/*  <DropdownMenu.Portal>*/}
+          {/*    <DropdownContentLayout>*/}
+          {/*      {FOOTER_LINKS.map(*/}
+          {/*        (item, index) =>*/}
+          {/*          item.isDropDown && (*/}
+          {/*            <DropdownItemLayout key={index}>*/}
+          {/*              <span className="break-words">{item.name}</span>*/}
+          {/*            </DropdownItemLayout>*/}
+          {/*          )*/}
+          {/*      )}*/}
+          {/*    </DropdownContentLayout>*/}
+          {/*  </DropdownMenu.Portal>*/}
+          {/*</DropdownMenu.Root>*/}
+
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <span className="break-words">More...</span>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-fit">
+              {FOOTER_LINKS.map(
+                (item, index) =>
+                  item.isDropDown && (
+                    <DropdownMenuItem key={index}>
+                      <span className="break-words">{item.name}</span>
+                    </DropdownMenuItem>
+                  )
+              )}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
-        <div className={`break-words my-[2px] pr-3`}>
-          <span className={`break-words`}>© 2023 Fake X.</span>
+        <div className="break-words my-[2px] pr-3">
+          <span className="break-words">© 2023 Fake X.</span>
         </div>
       </nav>
     </div>
   );
 }
-

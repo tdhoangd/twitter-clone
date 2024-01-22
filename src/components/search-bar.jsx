@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import { BsSearch } from "react-icons/bs";
-import { MdClear } from "react-icons/md";
+import { ClearIcon, SearchIcon } from "@/components/icons";
 
 export function SearchBar() {
   const [searchValue, setSearchValue] = useState("");
@@ -31,20 +30,17 @@ export function SearchBar() {
 
   return (
     <div
-      className={`group flex items-center justify-between gap-4 rounded-full bg-cc-bg-secondary p-3
-        transition border border-cc-bg-primary
-        focus-within:border-cc-accent focus-within:bg-cc-bg-primary`}
+      className={`group flex items-center justify-between gap-4 rounded-full bg-color-bg-3 p-3
+        transition border border-color-bg
+        focus-within:border-color-accent focus-within:bg-color-bg`}
       ref={containerRef}
     >
-      <div
-        className={`ml-3 p-1 text-cc-text-secondary group-focus-within:text-cc-accent`}
-      >
-        <BsSearch className={`h-5 w-5`} />
+      <div className="ml-3 p-1 text-color-text-dimmed group-focus-within:text-color-accent">
+        <SearchIcon className="h-5 w-5" />
       </div>
-      <div className={`flex flex-grow`}>
+      <div className="flex flex-grow">
         <input
-          className={`peer flex-1 bg-transparent outline-none
-            dark:placeholder:text-dark-secondary`}
+          className="peer flex-1 bg-transparent outline-none dark:placeholder:text-dark-secondary"
           type="text"
           placeholder="Search"
           value={searchValue}
@@ -54,14 +50,13 @@ export function SearchBar() {
 
         {searchValue && inputFocus && (
           <div
-            className={`rounded-full bg-cc-accent text-cc-text-secondary p-1`}
+            className="rounded-full bg-color-accent text-color-text-main p-1"
             onClick={handleClearInput}
           >
-            <MdClear className={`w-4 h-4`} />
+            <ClearIcon className={`w-4 h-4`} />
           </div>
         )}
       </div>
     </div>
   );
 }
-
