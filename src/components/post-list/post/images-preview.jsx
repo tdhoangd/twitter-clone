@@ -16,7 +16,7 @@ export function ImagesPreview({ images, removeImage }) {
         " grid-rows-2 ": images.length > 2,
       })}
     >
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="popLayout">
         {images.map((image, index) => {
           return (
             <motion.div

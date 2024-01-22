@@ -21,6 +21,7 @@ Avatar.displayName = AvatarPrimitive.Root.displayName;
 const AvatarImage = React.forwardRef(({ className, ...props }, ref) => (
   <AvatarPrimitive.Image
     ref={ref}
+    fetchPriority="auto"
     className={cn(
       "object-cover rounded-full flex flex-grow",
       "h-full w-full object-cover ",

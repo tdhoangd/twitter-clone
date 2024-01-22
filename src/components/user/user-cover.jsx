@@ -14,6 +14,7 @@ export default function UserCover({ imagePath }) {
             alt="user home cover"
             fill
             sizes="600px 210px"
+            priority
           />
         )}
       </Suspense>

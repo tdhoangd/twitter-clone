@@ -57,17 +57,12 @@ export const postsSlice = (set, get) => ({
         },
       };
 
-      // Additionally, add to currentPageKey if it's not 'foryou' or 'following' and starts with 'me'
-
-      // console.log("ADD POST POSTSSLICE", state.currentPageKey, newPost);
-
       if (
         (state.currentPageKey !== "foryou" &&
           state.currentPageKey !== "following" &&
           state.currentPageKey.startsWith("owner")) ||
         state.currentPageKey === `reply_${newPost.reply_to_id}`
       ) {
-        console.log("REP???");
         updatedPageData[state.currentPageKey] = {
           ...updatedPageData[state.currentPageKey],
           postKeys: [
@@ -160,8 +155,6 @@ export const postsSlice = (set, get) => ({
 
       // Convert the set back to an array for the updated post keys
       const updatedPostKeys = Array.from(existingPostKeys);
-
-      console.log("updatedPostKeys", updatedPostKeys);
 
       return {
         ...state,

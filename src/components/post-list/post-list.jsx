@@ -30,16 +30,6 @@ export const PostList = ({
   if (status === "pending") return <Loading />;
   if (status === "error") return <p>Error: {error.message}</p>;
 
-  // const renderedContent = posts.map((post, i) => (
-  //   <Post
-  //     key={post.key}
-  //     post={post}
-  //     variant="list"
-  //     hasParent={post.hasParent}
-  //     hasChildren={post.hasChildren}
-  //   />
-  // ));
-
   const renderedContent = posts.map((post, i) => {
     // Check if the post has a parent
     const hasParent = i > 0 && posts[i - 1].id === post.reply_to_id;
