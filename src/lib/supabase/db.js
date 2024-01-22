@@ -157,7 +157,6 @@ export async function dbCreateAndFetchPost({
     .select()
     .single();
 
-  console.log("createThenGetPost", data, error);
   if (error) throw error;
 
   return data;
@@ -169,7 +168,6 @@ export async function dbUploadImage(user_id, image) {
     .from("images")
     .upload(fileName, image);
 
-  console.log("dbuploadimage", data, error);
   if (error) throw error;
   return data.path;
 }
@@ -199,15 +197,6 @@ export async function dbCreateNewPost({
   reply_to_id,
   original_id,
 }) {
-  console.log(
-    "ADD NEW POST: ",
-    user_id,
-    content,
-    images,
-    reply_to_id,
-    original_id
-  );
-
   try {
     const post = await dbCreateAndFetchPost({
       user_id,
@@ -277,8 +266,6 @@ export async function dbUpdateUserProfile({
       .eq("id", user.id)
       .select()
       .single();
-
-    console.log("dbUpdateUSerPRofile", error, data);
 
     if (error) throw error;
     return data;
@@ -401,8 +388,6 @@ const dbFetchPostsForeigns = async (userId, postIds) => {
 
 // #####################################################/
 export async function dbFetchTimeline({ pageParam, queryKey }) {
-  console.log("DB fetchTimeline", pageParam, queryKey);
-
   const [_, { userId, timeAnchor, pageSize }] = queryKey;
   const starIndex = pageParam * pageSize;
   const endIndex = starIndex + pageSize - 1;
@@ -466,8 +451,6 @@ export async function dbFetchTimeline({ pageParam, queryKey }) {
 }
 
 export async function dbFetchFollowingPosts({ pageParam, queryKey }) {
-  console.log("DB dbFetchFollowingPosts", pageParam, queryKey);
-
   const [_, { userId, timeAnchor, pageSize, following }] = queryKey;
   const starIndex = pageParam * pageSize;
   const endIndex = starIndex + pageSize - 1;
@@ -527,7 +510,6 @@ export async function dbFetchFollowingPosts({ pageParam, queryKey }) {
 
   const posts = preprocessPosts(userId, postsWithInteractions);
   const finalPosts = await dbProcessReplies(userId, posts);
-  console.log("finalPosts", finalPosts);
 
   return finalPosts;
 }
@@ -538,8 +520,6 @@ export async function dbFetchBookmarkPosts({ pageParam, queryKey }) {
   const starIndex = pageParam * pageSize;
   const endIndex = starIndex + pageSize - 1;
   const supabase = createClientComponentClient();
-
-  console.log("DB fetchBookmarkPosts", pageParam, queryKey);
 
   const { data, error } = await supabase
     .from("posts")
@@ -563,8 +543,6 @@ export async function dbFetchBookmarkPosts({ pageParam, queryKey }) {
   if (error) throw error;
 
   const posts = await preprocessPosts(userId, data);
-
-  console.log("dbFetchBookmarkPosts", posts);
 
   return posts;
 }
@@ -611,13 +589,9 @@ export async function dbFetchPost({ postId, repostId, userId }) {
         reposter: repostData.reposter,
       };
     }
-
-    console.log("repostData", repostData);
   }
 
   const processedPosts = await preprocessPosts(userId, [post]);
-
-  console.log(processedPosts);
 
   return processedPosts[0]; // Corrected this line
 }
@@ -796,10 +770,6 @@ export async function dbFetchProfileReplies({ pageParam, queryKey }) {
   const posts = preprocessPosts(userId, postsWithInteractions);
   const finalPosts = await dbProcessReplies(userId, posts);
 
-  console.log("fetchProfilePosts", posts);
-  // console.log("fetchProfilePosts", finalPosts);
-
-  // return posts;
   return finalPosts;
 }
 
