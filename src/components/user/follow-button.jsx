@@ -41,7 +41,7 @@ export function FollowButton({ userTargetId, userTargetUsername, large }) {
           )
         }
       >
-        <div className="text-center w-[72px]">
+        <div className={isFollowed ? "text-center w-[72px]" : "text-center"}>
           <span>{buttonText}</span>
         </div>
       </Button>

@@ -73,12 +73,20 @@ module.exports = {
         "color-border": "rgb(var(--color-border) / <alpha-value>)",
         "color-dark": "rgb(var(--color-dark) / <alpha-value>)",
         "color-backdrop": "rgb(var(--color-backdrop) / <alpha-value>)",
+
+        "color-purple": "rgb(var(--color-purple) / <alpha-value>)",
         "color-blue": "rgb(var(--color-blue) / <alpha-value>)",
+        "color-yellow": "rgb(var(--color-yellow) / <alpha-value>)",
         "color-green": "rgb(var(--color-green) / <alpha-value>)",
         "color-red": "rgb(var(--color-red) / <alpha-value>)",
+        "color-orange": "rgb(var(--color-orange) / <alpha-value>)",
 
         "color-accent": "rgb(var(--color-accent) / <alpha-value>)",
         "color-accent-hover": "rgb(var(--color-accent-hover) / <alpha-value>)",
+
+        "color-bg-default": "rgb(var(--color-bg-default) / <alpha-value>)",
+        "color-bg-dim": "rgb(var(--color-bg-dim) / <alpha-value>)",
+        "color-bg-light": "rgb(var(--color-bg-light) / <alpha-value>)",
       },
       boxShadow: {
         uniform: "0 0 10px 0",

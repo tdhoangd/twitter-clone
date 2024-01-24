@@ -23,6 +23,7 @@ const DropdownMenuContent = React.forwardRef(
           <DropdownMenuPrimitive.Content
             ref={ref}
             sideOffset={sideOffset}
+            collisionPadding={10}
             className={cn(
               "z-[100] rounded-xl bg-color-bg ease-out duration-500 overflow-hidden shadow-xl",
               "shadow-[0px_0px_6px_2px] shadow-color-border",

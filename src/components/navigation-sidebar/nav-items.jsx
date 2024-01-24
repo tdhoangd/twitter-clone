@@ -9,9 +9,17 @@ import {
   MailIcon,
   OutlineThreedotIcon,
   SearchIcon,
+  SettingIcon,
   UserIcon,
 } from "@/components/icons";
 import NavItem from "./nav-item";
+import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
+import {
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdonw-menu";
+import { ChangeTheme } from "@/components/change-theme";
 
 function NavItems({ username }) {
   const NAVIGATION_ITEMS = [
@@ -23,22 +31,22 @@ function NavItems({ username }) {
     {
       title: "Explore",
       icon: SearchIcon,
-      link: "/explore",
+      link: "#",
     },
     {
       title: "Notifications",
       icon: BellIcon,
-      link: "/notifications",
+      link: "#",
     },
     {
       title: "Messages",
       icon: MailIcon,
-      link: "/messages",
+      link: "#",
     },
     {
       title: "lists",
       icon: ListIcon,
-      link: "/lists",
+      link: "#",
     },
     {
       title: "Bookmarks",
@@ -48,17 +56,12 @@ function NavItems({ username }) {
     {
       title: "Communities",
       icon: GroupIcon,
-      link: "/communities",
+      link: "#",
     },
     {
       title: "Profile",
       icon: UserIcon,
       link: `/${username}`,
-    },
-    {
-      title: "More",
-      icon: OutlineThreedotIcon,
-      link: "/more",
     },
   ];
 
@@ -72,6 +75,8 @@ function NavItems({ username }) {
           icon={<item.icon className={``} />}
         />
       ))}
+
+      <ChangeTheme />
     </nav>
   );
 }

@@ -5,7 +5,7 @@ import { ProfileHeader } from "./profile-header";
 import { dbFetchProfile } from "@/lib/supabase/db";
 import React, { Suspense, useEffect, useState } from "react";
 import { UserDetail } from "@/components/user/user-detail";
-import { ProfileNav } from "@/app/(protected)/(main)/(content)/[profileUsername]/profile-nav";
+import { ProfileNavs } from "@/app/(protected)/(main)/(content)/[profileUsername]/profile-navs";
 import { usePathname } from "next/navigation";
 import { useBoundStore } from "@/store/use-bound-store";
 import { Loading } from "@/components/ui/loading";
@@ -79,7 +79,7 @@ export default function ProfileLayout({ params, children }) {
           <UserDetail username={username} />
         </div>
 
-        <ProfileNav activePath={pathname} profileUsername={username} />
+        <ProfileNavs activePath={pathname} profileUsername={username} />
         <section className="flex flex-col">
           <Suspense fallback={<Loading />}>{children}</Suspense>
         </section>

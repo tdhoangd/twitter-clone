@@ -14,9 +14,10 @@ import {
   BsSearch,
   BsThreeDots,
   BsTrash3,
+  BsExclamationTriangle,
 } from "react-icons/bs";
 import { TbCalendarStats } from "react-icons/tb";
-import { IoLocationOutline } from "react-icons/io5";
+import { IoLocationOutline, IoCheckmarkSharp } from "react-icons/io5";
 import { LiaFeatherAltSolid } from "react-icons/lia";
 import { FiUserPlus, FiUserX } from "react-icons/fi";
 import { VscPinned } from "react-icons/vsc";
@@ -73,3 +74,5 @@ export const CalendarIcon = IoCalendarOutline;
 export const LinkIcon = RiLinkM;
 export const CloseIcon = MdOutlineClose;
 export const PhotoIcon = MdOutlineAddAPhoto;
+export const CheckmarkIcon = IoCheckmarkSharp;
+export const WarningIcon = BsExclamationTriangle;

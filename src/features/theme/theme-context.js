@@ -1,9 +1,9 @@
 import { createContext } from "react";
 
 const ThemeContext = createContext({
-  theme: "dark",
+  theme: "default",
   setTheme: () => {},
-  accent: "purple",
+  accent: "blue",
   setAccent: () => {},
 });
 

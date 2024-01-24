@@ -15,11 +15,27 @@ export function UserUsername({ username, className }) {
         textOverflow: "clip",
       }}
       className={cn(
-        "outline-none cursor-pointer leading-5 text-color-text-dimmed",
+        "outline-none cursor-pointer leading-5 text-color-text-dimmed overflow-hidden truncate",
+        "flex flex-col basis-auto",
         className
       )}
     >
-      <span>{`@${username}`}</span>
+      <span>@{username}fsjfhsgfjhsfgdsjhfgshjsgfhjfgsjhfgsd</span>
     </Link>
   );
 }
+
+// <div className="max-w-full shrink flex basis-auto">
+// <span className="min-w-0 max-w-full text-ellipsis overflow-hidden">
+//   <span
+//     className=""
+//     style={{
+//       textOverflow: "unset",
+//       wordWrap: "break-word",
+//       minWidth: "0",
+//     }}
+//   >
+//     {`@${username}`}djhf fgjhsfgsjhfgsfjhgfsjhfgdsjfffffdddh1234
+//   </span>
+// </span>
+// </div>

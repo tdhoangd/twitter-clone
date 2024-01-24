@@ -36,9 +36,11 @@ const DialogContent = React.forwardRef(
         className={cn(
           "z-[100] no-scrollbar .no-scrollbar::-webkit-scrollbar",
           "fixed inset-0 flex items-start justify-center w-full 2sm:w-[600px] 2sm:h-fit",
-          "fixed top-0 bottom-0 left-[50%] right-[50%] translate-x-[-50%] my-0 2sm:my-[5vh]",
+          "fixed top-0 bottom-0 left-[50%] right-[50%] translate-x-[-50%]  my-0 2sm:my-[5vh]",
           "animate-in data-[state=open]:fade-in-90 data-[state=open]:slide-in-from-bottom-10 data-[state=open]:2sm:slide-in-from-bottom-0 ",
-          { "overflow-y-auto": scrollable },
+          {
+            "overflow-y-auto": scrollable,
+          },
           className
         )}
         {...props}

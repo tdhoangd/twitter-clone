@@ -105,10 +105,11 @@ const PostComponent = (
       animate="enter"
       exit="exit"
     >
+      {/* hover:bg-color-dark/10 */}
       <article
         onClick={variant === "list" ? handleClickArticle : undefined}
         className={cn("px-4", {
-          "hover:bg-color-dark/30 cursor-pointer ": variant === "list",
+          " hover:bg-color-bg-3 cursor-pointer ": variant === "list",
           "border-b border-color-border": !hasChildren && variant === "list",
         })}
       >
@@ -133,7 +134,8 @@ const PostComponent = (
               )}
             </div>
 
-            <div className="flex min-w-0 max-w-[514px] w-full flex-col pb-3">
+            <div className="flex min-w-0  2sm:max-w-[514px] flex-col pb-3">
+              {/* w-full w-[calc(100%-84px)]  */}
               <PostUserAndActions
                 variant={variant}
                 authorId={author.id}

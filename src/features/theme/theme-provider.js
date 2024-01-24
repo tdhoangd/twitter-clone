@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import ThemeContext from "./theme-context";
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("dark");
-  const [accent, setAccent] = useState("purple");
+  const [theme, setTheme] = useState("default");
+  const [accent, setAccent] = useState("blue");
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme, accent, setAccent }}>

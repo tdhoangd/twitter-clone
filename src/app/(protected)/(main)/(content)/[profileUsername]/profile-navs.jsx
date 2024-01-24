@@ -3,7 +3,7 @@
 import { PageNavItem } from "@/components/page-nav-item";
 import React from "react";
 
-export function ProfileNav({ activePath, profileUsername }) {
+export function ProfileNavs({ activePath, profileUsername }) {
   const links = [
     { title: "Posts", link: `/${profileUsername}` },
     { title: "Replies", link: `/${profileUsername}/with_replies` },
