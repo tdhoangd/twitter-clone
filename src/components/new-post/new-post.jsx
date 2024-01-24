@@ -112,7 +112,8 @@ export function NewPost({
               <div className="flex-auto"></div>
 
               {/* button grp */}
-              {/* <div className="flex 2sm:hidden  min-w-[56px] flex-col justify-center items-end self-stretch">
+
+              {/* <div className="flex  min-w-[56px] flex-col justify-center items-end self-stretch">
                 <div className="flex flex-row gap-3 items-center ">
                   <Button disabled variant={"inverse"}>
                     <span>Drafts</span>
@@ -122,16 +123,6 @@ export function NewPost({
                   </Button>
                 </div>
               </div> */}
-              <div className="flex  min-w-[56px] flex-col justify-center items-end self-stretch">
-                <div className="flex flex-row gap-3 items-center ">
-                  <Button disabled variant={"inverse"}>
-                    <span>Drafts</span>
-                  </Button>
-                  <Button disabled className="ml-3">
-                    <span>Post</span>
-                  </Button>
-                </div>
-              </div>
             </div>
 
             {renderedInput}

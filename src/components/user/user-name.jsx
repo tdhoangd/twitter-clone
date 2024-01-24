@@ -19,10 +19,7 @@ export function UserName({ name, username, className }) {
         className
       )}
     >
-      <span>
-        {name ? name : "No name"}dsfjshf
-        sgfhjdffmsfshfgshfjgfhjsdfsfsfsfsdadaddadadas gfhs
-      </span>
+      <span>{name ? name : "No name"}</span>
     </Link>
   );
 }

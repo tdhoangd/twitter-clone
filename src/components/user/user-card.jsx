@@ -1,10 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { FollowButton } from "@/components/user/follow-button";
 import { UserAvatar } from "@/components/user/user-avatar";
 import UserFollowStats from "@/components/user/user-follow-stats";
 import { UserName } from "@/components/user/user-name";
+import { UserTooltip } from "@/components/user/user-tooltip";
 import { UserUsername } from "@/components/user/user-username";
 import { useBoundStore } from "@/store/use-bound-store";
 import { cn } from "@/utils/helpers";
@@ -15,7 +15,7 @@ export function UserCard({
   variant = "modal", // modal, inline, inlineShort
 }) {
   const currentUser = useBoundStore((state) => state.user);
-  const { name, username } = user;
+  const { name, username, id: userId } = user;
 
   return (
     <div
@@ -38,25 +38,34 @@ export function UserCard({
               { "w-16 h-16": variant === "modal", "mr-3": variant !== "modal" }
             )}
           >
-            <UserAvatar
-              name={user.name}
-              username={user.username}
-              imagePath={user.avatar_image_path}
-              className={variant === "modal" && "w-16 h-16"}
-              asLink
-            />
+            <UserTooltip username={username}>
+              <UserAvatar
+                name={user.name}
+                username={user.username}
+                imagePath={user.avatar_image_path}
+                className={variant === "modal" && "w-16 h-16"}
+                asLink
+              />
+            </UserTooltip>
           </div>
 
           {currentUser.id !== user.id && variant === "modal" && (
             <div className="flex flex-row justify-end gap-1">
-              <FollowButton type="follow" />
+              <FollowButton
+                userTargetId={userId}
+                userTargetUsername={username}
+              />
             </div>
           )}
         </div>
 
-        <div className="flex flex-col shrink min-w-0">
-          <div className={cn("flex shrink", { "mt-2": variant === "modal" })}>
-            <div className="flex min-w-0 shrink items-baseline">
+        <div className="flex flex-col flex-1  basis-auto min-w-0">
+          <div
+            className={cn("flex shrink justify-between w-full", {
+              "mt-2": variant === "modal",
+            })}
+          >
+            <div className="flex min-w-0 grow shrink  items-baseline">
               <div className="flex flex-col max-w-full shrink ">
                 <div
                   className={cn(
@@ -64,24 +73,30 @@ export function UserCard({
                   )}
                 >
                   <div className="flex shrink truncate">
-                    <UserName
-                      name={name}
-                      username={username}
-                      className="hover:underline"
-                    />
+                    <UserTooltip username={username}>
+                      <UserName
+                        name={name}
+                        username={username}
+                        className="hover:underline"
+                      />
+                    </UserTooltip>
                   </div>
 
                   <div className="flex shrink truncate">
-                    <UserUsername username={username} />
+                    <UserTooltip username={username}>
+                      <UserUsername username={username} />
+                    </UserTooltip>
                   </div>
                 </div>
               </div>
             </div>
 
             {variant !== "modal" && (
-              <div className="block flex-basis w-20 ml-3">
-                {/* TODO: add props to followbutton */}
-                <FollowButton userTargetId={""} userTargetUsername={""} />
+              <div className="block flex-basis  ml-3">
+                <FollowButton
+                  userTargetId={userId}
+                  userTargetUsername={username}
+                />
               </div>
             )}
           </div>

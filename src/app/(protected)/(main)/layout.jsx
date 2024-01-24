@@ -62,8 +62,8 @@ export default function MainLayout({ children }) {
           </header>
 
           <main className=" flex shrink grow basis-auto flex-col items-start w-full 2sm:w-fit ">
-            <div className="h-screen w-full xs:w-[calc(100%-68px)] sm:w-[calc(100%-88px)] 2sm:w-[600px] md:w-[920px] xl:w-[990px] 3xl:w-[1050px]">
-              <div className="relative flex shrink-0 grow basis-auto flex-col items-stretch">
+            <div className="h-screen w-full  2sm:w-[600px] md:w-[920px] xl:w-[990px] 3xl:w-[1050px]">
+              <div className="relative flex shrink-0 grow basis-auto flex-col items-stretch ">
                 {children}
               </div>
             </div>

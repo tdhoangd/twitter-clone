@@ -64,7 +64,7 @@ export default function PostDropdownActions({
               </div>
             </DropdownMenuItem>
 
-            <DropdownMenuItem className="flex">
+            <DropdownMenuItem className="flex" disabled>
               <div className="flex-none pr-3">
                 <PinIcon />
               </div>

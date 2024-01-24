@@ -1,5 +1,5 @@
 "use client";
-import { EmptyCard } from "@/app/(protected)/(main)/(content)/[profileUsername]/empty-card";
+import { EmptyCard } from "@/components/empty-card";
 import { EMPTY_MESSAGES } from "@/utils/empty-page-messages";
 import { useBoundStore } from "@/store/use-bound-store";
 import React from "react";

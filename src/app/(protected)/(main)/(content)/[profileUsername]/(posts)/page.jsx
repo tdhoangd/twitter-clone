@@ -1,24 +1,21 @@
 "use client";
 
-import { EmptyCard } from "@/app/(protected)/(main)/(content)/[profileUsername]/empty-card";
+import { EmptyCard } from "@/components/empty-card";
 import { EMPTY_MESSAGES } from "@/utils/empty-page-messages";
+import { useBoundStore } from "@/store/use-bound-store";
 import { PostList } from "@/components/post-list/post-list";
 import { usePosts } from "@/hooks/use-posts";
-import { dbFetchProfileReplies } from "@/lib/supabase/db";
-import { useBoundStore } from "@/store/use-bound-store";
-import React from "react";
+import { dbFetchProfilePosts } from "@/lib/supabase/db";
 
-export default function ProfileWithRepliesPage({
-  params: { profileUsername },
-}) {
+export default function ProfilePage({ params: { profileUsername } }) {
   const user = useBoundStore((state) => state.user);
   const userProfiles = useBoundStore((state) => state.userProfiles);
   const profile =
     userProfiles.find((user) => user.username === profileUsername) || null;
 
   const context = usePosts(
-    dbFetchProfileReplies,
-    `profile-${profileUsername}-replies`,
+    dbFetchProfilePosts,
+    `profile-${profileUsername}-posts`,
     { profileId: profile?.id }
   );
 
@@ -30,13 +27,13 @@ export default function ProfileWithRepliesPage({
         <EmptyCard
           title={
             profileUsername === user.username
-              ? EMPTY_MESSAGES.replies.owner.title
-              : EMPTY_MESSAGES.replies.other.title(profileUsername)
+              ? EMPTY_MESSAGES.posts.owner.title
+              : EMPTY_MESSAGES.posts.other.title(profileUsername)
           }
           description={
             profileUsername === user.username
-              ? EMPTY_MESSAGES.replies.owner.description
-              : EMPTY_MESSAGES.replies.other.description
+              ? EMPTY_MESSAGES.posts.owner.description
+              : EMPTY_MESSAGES.posts.other.description
           }
         />
       ) : (

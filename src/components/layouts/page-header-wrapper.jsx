@@ -33,7 +33,7 @@ export function PageHeaderWrapper({
     <div className="sticky -top-[0.5px] z-30">
       <div
         className={cn(
-          "px-4 h-[53px] flex items-center mx-auto bg-color-bg bg-opacity-80 backdrop-blur-md w-full",
+          "px-4 h-[53px] flex items-center mx-auto bg-color-bg bg-opacity-80 backdrop-blur-sm w-full",
           className
         )}
       >

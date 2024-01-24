@@ -28,8 +28,6 @@ export function ChangeTheme() {
     // TODO: change theme in server
   };
 
-  console.log(theme, accent);
-
   return (
     <>
       <DropdownMenu>

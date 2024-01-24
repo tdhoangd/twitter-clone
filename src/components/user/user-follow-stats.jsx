@@ -10,7 +10,7 @@ export default function UserFollowStats({
 }) {
   const stats = [
     { text: "Following", stat: followingCount, link: `/${username}/following` },
-    { text: "Follower", stat: followersCount, link: `/${username}/followers` },
+    { text: "Followers", stat: followersCount, link: `/${username}/followers` },
   ];
 
   return (

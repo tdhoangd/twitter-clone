@@ -20,22 +20,7 @@ export function UserUsername({ username, className }) {
         className
       )}
     >
-      <span>@{username}fsjfhsgfjhsfgdsjhfgshjsgfhjfgsjhfgsd</span>
+      <span>@{username}</span>
     </Link>
   );
 }
-
-// <div className="max-w-full shrink flex basis-auto">
-// <span className="min-w-0 max-w-full text-ellipsis overflow-hidden">
-//   <span
-//     className=""
-//     style={{
-//       textOverflow: "unset",
-//       wordWrap: "break-word",
-//       minWidth: "0",
-//     }}
-//   >
-//     {`@${username}`}djhf fgjhsfgsjhfgsfjhgfsjhfgdsjfffffdddh1234
-//   </span>
-// </span>
-// </div>

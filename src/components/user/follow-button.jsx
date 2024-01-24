@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useUserInteractions } from "@/hooks/use-user-interactions";
 import { useBoundStore } from "@/store/use-bound-store";
+import { cn } from "@/utils/helpers";
 import React, { useEffect, useState } from "react";
 
 export function FollowButton({ userTargetId, userTargetUsername, large }) {
@@ -40,8 +41,9 @@ export function FollowButton({ userTargetId, userTargetUsername, large }) {
             checkIsFollowing(userTargetId)
           )
         }
+        className={cn({ "w-72px": isFollowed })}
       >
-        <div className={isFollowed ? "text-center w-[72px]" : "text-center"}>
+        <div className={"text-center"}>
           <span>{buttonText}</span>
         </div>
       </Button>

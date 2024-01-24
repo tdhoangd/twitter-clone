@@ -76,15 +76,17 @@ export const usersSlice = (set, get) => ({
       }
 
       // update the target users' followers count in userProfiles
-      const updatedUserProfiles = { ...state.userProfiles };
-      if (updatedUserProfiles[targetUserId]) {
-        updatedUserProfiles[targetUserId] = {
-          ...updatedUserProfiles[targetUserId],
-          followers_count: isFollowing
-            ? (updatedUserProfiles[targetUserId].followers_count || 1) - 1
-            : (updatedUserProfiles[targetUserId].followers_count || 0) + 1,
-        };
-      }
+      const updatedUserProfiles = state.userProfiles.map((profile) => {
+        if (profile.id === targetUserId) {
+          return {
+            ...profile,
+            followers_count: isFollowing
+              ? Math.max((profile.followers_count || 0) - 1, 0)
+              : (profile.followers_count || 0) + 1,
+          };
+        }
+        return profile;
+      });
 
       return {
         ...state,

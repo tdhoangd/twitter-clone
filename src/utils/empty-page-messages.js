@@ -41,4 +41,29 @@ export const EMPTY_MESSAGES = {
       description: "Once they do, those replies will show up here.",
     },
   },
+
+  following: {
+    owner: {
+      title: "Be in the know",
+      description:
+        "Following accounts is an easy way to curate your timeline and know what’s happening with the topics and people you’re interested in.",
+    },
+    other: {
+      title: (username) => `@${username} isn’t following anyone`,
+      description: "Once they follow accounts, they’ll show up here.",
+    },
+  },
+
+  followers: {
+    owner: {
+      title: "Looking for followers?",
+      description:
+        "When someone follows this account, they’ll show up here. Posting and interacting with others helps boost followers.",
+    },
+    other: {
+      title: "Looking for followers?",
+      description:
+        "When someone follows this account, they’ll show up here. Posting and interacting with others helps boost followers.",
+    },
+  },
 };

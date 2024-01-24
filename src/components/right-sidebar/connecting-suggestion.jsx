@@ -1,8 +1,13 @@
+"use client";
 import Link from "next/link";
-import FollowUserCard from "../follow-user-card";
 import { UserCard } from "@/components/user/user-card";
+import { useSuggestedProfiles } from "@/hooks/use-suggested-profiles";
+import Error from "@/components/error";
+import { Loading } from "@/components/ui/loading";
 
 export function ConnectingSuggestion() {
+  const { status, data, error } = useSuggestedProfiles(3);
+
   return (
     <div>
       <div className={`fi rounded-2xl bg-color-bg-2 overflow-hidden`}>
@@ -10,34 +15,15 @@ export function ConnectingSuggestion() {
           <h2 className={`text-xl font-bold`}>Who to follow</h2>
         </div>
 
-        {/* <FollowUserCard />
-        <FollowUserCard />
-        <FollowUserCard /> */}
-
-        <UserCard
-          variant="inlineShort"
-          user={{
-            name: "Test",
-            username: "fjfgfh",
-            bio: "grskdjsghd kjdhjdkgd",
-          }}
-        />
-        <UserCard
-          variant="inlineShort"
-          user={{
-            name: "Test2",
-            username: "fjfgfh",
-            bio: "gdjghd gjdhdfjgdghjdghdfkhj",
-          }}
-        />
-        <UserCard
-          variant="inlineShort"
-          user={{
-            name: "Test3",
-            username: "fjfgrtertetrt3g3331231311ertetfh",
-            bio: "gdfjghdf1r 45345",
-          }}
-        />
+        {status === "error" ? (
+          <Error message={"Unable to load."} />
+        ) : status === "pending" ? (
+          <Loading />
+        ) : (
+          data.map((profile) => (
+            <UserCard key={profile.id} user={profile} variant="inlineShort" />
+          ))
+        )}
 
         <Link
           href={"/connect_people"}
@@ -49,9 +35,3 @@ export function ConnectingSuggestion() {
     </div>
   );
 }
-
-// SuggestedUsersSection
-// - UserSuggestion
-//   - UserAvatar
-//   - Username
-//   - UserFullName ...

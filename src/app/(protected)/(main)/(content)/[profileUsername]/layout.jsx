@@ -1,89 +1,33 @@
 "use client";
 
-import { AccountNotFound } from "./account-not-found";
-import { ProfileHeader } from "./profile-header";
-import { dbFetchProfile } from "@/lib/supabase/db";
-import React, { Suspense, useEffect, useState } from "react";
-import { UserDetail } from "@/components/user/user-detail";
-import { ProfileNavs } from "@/app/(protected)/(main)/(content)/[profileUsername]/profile-navs";
-import { usePathname } from "next/navigation";
-import { useBoundStore } from "@/store/use-bound-store";
 import { Loading } from "@/components/ui/loading";
+import { dbFetchProfile } from "@/lib/supabase/db";
+import { useBoundStore } from "@/store/use-bound-store";
+import { useQuery } from "@tanstack/react-query";
+import React, { useEffect } from "react";
 
 export default function ProfileLayout({ params, children }) {
   const { profileUsername: username } = params;
-  const [profile, setProfile] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const pathname = usePathname();
+  const addProfileToUserProfiles = useBoundStore(
+    (state) => state.addProfileToUserProfiles
+  );
 
-  const { userProfiles, addProfileToUserProfiles } = useBoundStore((state) => ({
-    userProfiles: state.userProfiles,
-    addProfileToUserProfiles: state.addProfileToUserProfiles,
-  }));
+  const { status, data, error } = useQuery({
+    queryKey: ["profile", { username }],
+    queryFn: ({ queryKey }) =>
+      dbFetchProfile({ username: queryKey[1].username }),
+    staleTime: Infinity,
+  });
 
   useEffect(() => {
-    const fetchTargetProfile = async () => {
-      let profile =
-        userProfiles.find((user) => user.username === username) || null;
+    if (status === "success" && data) {
+      addProfileToUserProfiles(data);
+    }
+  }, [addProfileToUserProfiles, data, status]);
 
-      if (!profile) {
-        try {
-          profile = await dbFetchProfile({ username });
-          if (profile) {
-            console.log("profileLayout", profile);
-
-            addProfileToUserProfiles(profile);
-          }
-        } catch (error) {
-          console.error("Error fetching profile:", error);
-        } finally {
-          setIsLoading(false);
-        }
-      } else {
-        setIsLoading(false);
-      }
-
-      setProfile(profile);
-    };
-
-    fetchTargetProfile();
-  }, [userProfiles, username, addProfileToUserProfiles]);
-
-  const header = (
-    <ProfileHeader
-      name={profile ? profile.name : undefined}
-      stat={!profile ? undefined : profile.posts[0].count}
-    />
-  );
-
-  if (isLoading) {
-    return (
-      <>
-        {header} <Loading />
-      </>
-    );
-  } else if (!profile) {
-    return (
-      <>
-        {header}
-        <AccountNotFound profileUsername={username} />
-      </>
-    );
+  if (status === "pending") {
+    return <Loading />;
   }
 
-  return (
-    <>
-      {header}
-      <div className="flex flex-col grow">
-        <div className="">
-          <UserDetail username={username} />
-        </div>
-
-        <ProfileNavs activePath={pathname} profileUsername={username} />
-        <section className="flex flex-col">
-          <Suspense fallback={<Loading />}>{children}</Suspense>
-        </section>
-      </div>
-    </>
-  );
+  return <>{children}</>;
 }

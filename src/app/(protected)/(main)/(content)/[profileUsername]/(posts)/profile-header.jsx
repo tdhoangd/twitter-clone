@@ -4,7 +4,7 @@ import { StatNumber } from "@/components/ui/stat-number";
 export function ProfileHeader({ name, stat }) {
   return (
     <PageHeaderWrapper>
-      <div className="w-full">
+      <div className="w-full overflow-hidden">
         <div className="font-bold leading-6 text-xl truncate">
           <span className="text-ellipsis whitespace-nowrap">
             {!name ? "Profile" : name}

@@ -1,6 +1,6 @@
 "use client";
 
-import { EmptyCard } from "@/app/(protected)/(main)/(content)/[profileUsername]/empty-card";
+import { EmptyCard } from "@/components/empty-card";
 import { EMPTY_MESSAGES } from "@/utils/empty-page-messages";
 import { PostList } from "@/components/post-list/post-list";
 import { usePosts } from "@/hooks/use-posts";

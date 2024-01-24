@@ -1,6 +1,6 @@
 "use client";
 
-import { EmptyCard } from "@/app/(protected)/(main)/(content)/[profileUsername]/empty-card";
+import { EmptyCard } from "@/components/empty-card";
 
 export function AccountNotFound({ profileUsername }) {
   return (

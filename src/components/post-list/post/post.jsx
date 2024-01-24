@@ -134,7 +134,7 @@ const PostComponent = (
               )}
             </div>
 
-            <div className="flex min-w-0  2sm:max-w-[514px] flex-col pb-3">
+            <div className="flex min-w-0 w-full 2sm:max-w-[514px] flex-col pb-3">
               {/* w-full w-[calc(100%-84px)]  */}
               <PostUserAndActions
                 variant={variant}

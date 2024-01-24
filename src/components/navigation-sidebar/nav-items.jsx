@@ -44,7 +44,7 @@ function NavItems({ username }) {
       link: "#",
     },
     {
-      title: "lists",
+      title: "Lists",
       icon: ListIcon,
       link: "#",
     },

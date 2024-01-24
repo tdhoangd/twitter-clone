@@ -45,8 +45,6 @@ export const useUserInteractions = () => {
   });
 
   const handleFollow = (targetUserId, targetUserUsername, isFollowed) => {
-    console.log("handleFollow", targetUserId, targetUserUsername, isFollowed);
-
     followMutation.mutate({
       targetUserId,
       targetUserUsername,
@@ -92,8 +90,6 @@ export const useUserInteractions = () => {
     avatarImage,
     coverImage,
   }) => {
-    console.log("calling use-user-interaction");
-
     editProfileMutation.mutate(
       {
         user,
@@ -106,7 +102,6 @@ export const useUserInteractions = () => {
       },
       {
         onSuccess: (data) => {
-          console.log("second onSuccess", data);
           updateUser(data);
         },
       }

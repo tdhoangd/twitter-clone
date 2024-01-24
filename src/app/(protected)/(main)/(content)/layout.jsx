@@ -9,7 +9,7 @@ export default function AppContentLayout({ children }) {
       <div className="flex min-h-screen w-full shrink-0 grow basis-auto items-stretch justify-between">
         <div className="w-full !2sm:w-[600px] 2sm:max-w-[600px] 2sm:min-w-[600px] border-l-0 border-r-0 border-color-border xs:border-l 2sm:border-r">
           <div className="w-full !2sm:w-[598px] 2sm:max-w-[598px] 2sm:min-w-[598px]">
-            <div className="h-fit flex flex-col ">{children}</div>
+            <div className="h-fit flex flex-col">{children}</div>
           </div>
         </div>
 

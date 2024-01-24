@@ -51,6 +51,36 @@ export async function dbFetchUserData() {
   };
 }
 
+export async function dbFetchFollowingProfiles(userId) {
+  const { data: followingProfiles, error: followingError } = await supabase
+    .from("followers")
+    .select(
+      `
+    following_id,
+    following: profiles!followers_following_id_fkey (id, name, username, avatar_image_path)
+  `
+    )
+    .eq("follower_id", userId);
+
+  if (followingError) throw followingError;
+  return followingProfiles.map((fp) => fp.following);
+}
+
+export async function dbFetchFollowersProfiles(userId) {
+  const { data: followersProfiles, error: followersError } = await supabase
+    .from("followers")
+    .select(
+      `
+    follower_id,
+    followers: profiles!followers_follower_id_fkey (id, name, username, avatar_image_path)
+  `
+    )
+    .eq("following_id", userId);
+
+  if (followersError) throw followersError;
+  return followersProfiles.map((fp) => fp.followers);
+}
+
 export async function dbFetchProfile({ username }) {
   const { data, error } = await supabase
     .from("profiles")
@@ -59,6 +89,21 @@ export async function dbFetchProfile({ username }) {
     .single();
 
   if (error || !data) return null;
+  return data;
+}
+
+export async function dbFetchSuggestedProfiles({ limit }) {
+  let query = supabase
+    .from("profiles")
+    .select("id, name, username, avatar_image_path, bio")
+    .order("created_at", { ascending: false });
+
+  if (limit) {
+    query = query.limit(limit);
+  }
+
+  const { data, error } = await query;
+  if (error) throw error;
   return data;
 }
 
