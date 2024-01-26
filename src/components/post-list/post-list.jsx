@@ -72,7 +72,7 @@ export const PostList = ({
           </button>
         </div>
       )}
-      <div ref={ref} className="h-40 w-full z-[777]"></div>
+      <div ref={ref} className="h-40 w-full"></div>
     </>
   );
 };
