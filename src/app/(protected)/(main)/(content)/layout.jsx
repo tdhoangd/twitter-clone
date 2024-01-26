@@ -17,7 +17,7 @@ export default function AppContentLayout({ children }) {
         <div className="hidden md:block mr-[10px] 3xl:mr-[70px] md:w-[290px] xl:w-[350px]">
           <div className="top-0 fixed h-screen md:w-[290px] xl:w-[350px]">
             <div className="pb-20 h-full overflow-y-auto gap-4 flex flex-col">
-              <div className="sticky top-0 z-30 bg-color-bg py-1">
+              <div className="sticky top-0 z-10 bg-color-bg py-1">
                 <SearchBar />
               </div>
               <TrendingNews />

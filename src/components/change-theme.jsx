@@ -7,7 +7,7 @@ import {
   SettingIcon,
 } from "@/components/icons";
 import { PageHeaderWrapper } from "@/components/layouts/page-header-wrapper";
-import NavItem from "@/components/navigation-sidebar/nav-item";
+import NavItem from "@/components/navigation/nav-item";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import {

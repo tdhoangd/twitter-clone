@@ -53,7 +53,7 @@ export function UserTooltip({ username, children }) {
       <Tooltip.Root>
         <Tooltip.Trigger>{children}</Tooltip.Trigger>
         <Tooltip.Portal>
-          <Tooltip.Content side="bottom" sideOffset="1" className="z-[700]">
+          <Tooltip.Content side="bottom" sideOffset="1" className="z-50">
             <AnimatePresence>
               <motion.div
                 animate="enter"
@@ -72,13 +72,6 @@ export function UserTooltip({ username, children }) {
                   ) : (
                     <UserCard user={targetUser} variant="modal" />
                   )}
-
-                  {/* {status === "success" ? (
-                    <UserCard user={data} variant="modal" />
-                  ) : (
-                    <Loading />
-                  )}
-                   */}
                 </div>
               </motion.div>
             </AnimatePresence>

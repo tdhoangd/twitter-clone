@@ -48,7 +48,7 @@ export default function ProfileConnectionLayout({ params, children }) {
       </PageHeaderWrapper>
 
       <nav
-        className="sticky top-[52.5px] z-30 flex items-center border-b border-color-border bg-color-bg bg-opacity-80  backdrop-blur-sm"
+        className="sticky top-[52.5px] z-10 flex items-center border-b border-color-border bg-color-bg bg-opacity-80  backdrop-blur-sm"
         role="navigation"
       >
         <div className="flex outline-none items-center grow justify-between">

@@ -1,8 +1,11 @@
 "use client";
+import Error from "@/components/error";
+import { ChatIcon } from "@/components/icons";
 import { PageHeaderWrapper } from "@/components/layouts/page-header-wrapper";
 import { NewPost } from "@/components/new-post/new-post";
 import { PostList } from "@/components/post-list/post-list";
 import { Post } from "@/components/post-list/post/post";
+import { Button } from "@/components/ui/button";
 import { Loading } from "@/components/ui/loading";
 
 import { usePost } from "@/hooks/use-post";
@@ -36,12 +39,8 @@ export default function PostPage({ params: { postId } }) {
   } else if (!isLoading && !post) {
     return (
       <>
-        <PageHeaderWrapper>
-          <span></span>
-        </PageHeaderWrapper>
-        <div className="mt-10 text-color-text-dimmed text-center">
-          <span>Somthing went wrong. Try reloading.</span>
-        </div>
+        <PageHeaderWrapper></PageHeaderWrapper>
+        <Error message="Somthing went wrong. Try reloading." />
       </>
     );
   } else {
@@ -52,6 +51,21 @@ export default function PostPage({ params: { postId } }) {
             <span className="text-ellipsis whitespace-nowrap">Post</span>
           </div>
         </PageHeaderWrapper>
+
+        <NewPost
+          asModal
+          parent={post}
+          isReply
+          modalTriggerComponent={
+            <div className="z-20 fixed bottom-20 right-[22px]  w-full flex items-center justify-end 2xl:justify-start xs:hidden">
+              <Button className="w-14 h-14 text-white">
+                <span className="font-color-text-main text-2xl">
+                  <ChatIcon className="text-3xl" />
+                </span>
+              </Button>
+            </div>
+          }
+        />
 
         {post && <Post post={post} variant="single" />}
 

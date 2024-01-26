@@ -559,7 +559,6 @@ export async function dbFetchFollowingPosts({ pageParam, queryKey }) {
   return finalPosts;
 }
 
-// DONE
 export async function dbFetchBookmarkPosts({ pageParam, queryKey }) {
   const [_, { userId, timeAnchor, pageSize, postId }] = queryKey;
   const starIndex = pageParam * pageSize;
@@ -592,7 +591,6 @@ export async function dbFetchBookmarkPosts({ pageParam, queryKey }) {
   return posts;
 }
 
-// DONE
 export async function dbFetchPost({ postId, repostId, userId }) {
   const supabase = createClientComponentClient();
 
@@ -605,7 +603,7 @@ export async function dbFetchPost({ postId, repostId, userId }) {
       likes (id),
       bookmarks (id),
       reposts (id),
-      post_images(id, post_id, image_url)
+      images: post_images(id, post_id, image_url)
       `
     )
     .eq("id", postId)
@@ -638,10 +636,9 @@ export async function dbFetchPost({ postId, repostId, userId }) {
 
   const processedPosts = await preprocessPosts(userId, [post]);
 
-  return processedPosts[0]; // Corrected this line
+  return processedPosts[0];
 }
 
-// DONE ? semi
 export async function dbFetchRepliesToPost({ pageParam, queryKey }) {
   const [_, { userId, timeAnchor, pageSize, postId }] = queryKey;
   const starIndex = pageParam * pageSize;

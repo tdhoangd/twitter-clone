@@ -16,7 +16,7 @@ function ConnectPeoplePage() {
     <>
       <div className="w-full">
         <div
-          className={`fi z-10 bg-th-background/60 px-4 py-2 backdrop-blur-md sticky top-0`}
+          className={`z-10 bg-th-background/60 px-4 py-2 backdrop-blur-md sticky top-0`}
         >
           <div className={`flex flex-row justify-start items-center`}>
             <button
@@ -38,60 +38,6 @@ function ConnectPeoplePage() {
             <UserCard key={profile.id} user={profile} variant="inline" />
           ))
         )}
-
-        {/* <UserCard
-        variant="inline"
-        user={{
-          name: "Test1",
-          username: "fjfgrtertetrt3g3331231311ertetfh",
-          bio: "gdfjghdf1r 45345",
-        }}
-      />
-
-      <UserCard
-        variant="inline"
-        user={{
-          name: "Test5",
-          username: "fjfgrtertetrt3g3331231311ertetfh",
-          bio: "gdfjghdf1r 45345",
-        }}
-      />
-
-      <UserCard
-        variant="inline"
-        user={{
-          name: "Test3",
-          username: "fjfgrtertetrt3g3331231311ertetfh",
-          bio: "gdfjghdf1r 45345",
-        }}
-      />
-
-      <UserCard
-        variant="inline"
-        user={{
-          name: "Test3",
-          username: "fjfgrtertetrt3g3331231311ertetfh",
-          bio: "gdfjghdf1r 45345",
-        }}
-      />
-
-      <UserCard
-        variant="inline"
-        user={{
-          name: "Test3",
-          username: "fjfgrtertetrt3g3331231311ertetfh",
-          bio: "gdfjghdf1r 45345",
-        }}
-      />
-
-      <UserCard
-        variant="inline"
-        user={{
-          name: "Test3",
-          username: "fjfgrtertetrt3g3331231311ertetfh",
-          bio: "gdfjghdf1r 45345",
-        }}
-      /> */}
       </div>
     </>
   );

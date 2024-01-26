@@ -6,7 +6,7 @@ import React, { Suspense } from "react";
 
 export default function UserCover({ imagePath }) {
   return (
-    <div className="mt-0.5 h-52 bg-color-bg-3 w-full relative overflow-hidden">
+    <div className="mt-0.5 h-40 xs:h-44 2sm:h-48 bg-color-bg-3 w-full relative overflow-hidden">
       <Suspense fallback={<Loading />}>
         {imagePath && (
           <Image

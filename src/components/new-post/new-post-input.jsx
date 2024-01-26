@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { EarthIcon } from "../icons";
 import { NewPostToolbar } from "./new-post-toolbar";
 import { CircularProgress } from "../ui/circular-progress";
@@ -8,32 +8,23 @@ import { Button } from "../ui/button";
 import { UserAvatar } from "../user/user-avatar";
 import TextArea from "react-textarea-autosize";
 import { cn } from "@/utils/helpers";
-import { useImage } from "@/hooks/use-image";
 import { ImagesPreview } from "@/components/post-list/post/images-preview";
 import { useBoundStore } from "@/store/use-bound-store";
+import { MAX_TWEET_LENGTH } from "@/utils/config";
 
-const MAX_TWEET_LENGTH = 280;
-
-export function NewPostInput({ asModal, isReply, onTweetSubmit }) {
-  const {
-    images,
-    handleImagePaste,
-    handleImageSelect,
-    resetImageStates,
-    removeImage,
-  } = useImage();
-  const [text, setText] = useState("");
-  const inputRef = useRef(null);
+export function NewPostInput({
+  asModal,
+  isReply,
+  sendPost,
+  content,
+  setContent,
+  images,
+  handleImagePaste,
+  handleImageSelect,
+  removeImage,
+}) {
   const [textAreaMinRow, setTextAreaMinRow] = useState(1);
   const user = useBoundStore((state) => state.user);
-
-  const resetTweetInputStates = () => {
-    setText("");
-    resetImageStates();
-    if (inputRef.current) {
-      inputRef.current.value = "";
-    }
-  };
 
   useEffect(() => {
     if (asModal && images.length < 1) {
@@ -44,7 +35,7 @@ export function NewPostInput({ asModal, isReply, onTweetSubmit }) {
   }, [images.length, asModal]);
 
   const handleTextChange = (event) => {
-    setText(event.target.value);
+    setContent(event.target.value);
   };
 
   const handlePaste = (event) => {
@@ -54,13 +45,8 @@ export function NewPostInput({ asModal, isReply, onTweetSubmit }) {
       const pastedText = (event.clipboardData || window.clipboardData).getData(
         "text"
       );
-      setText(text + pastedText);
+      setContent(text + pastedText);
     }
-  };
-
-  const handleSubmit = () => {
-    if (text.length > MAX_TWEET_LENGTH) return;
-    onTweetSubmit(inputRef.current.value, images, resetTweetInputStates);
   };
 
   return (
@@ -81,7 +67,7 @@ export function NewPostInput({ asModal, isReply, onTweetSubmit }) {
                 style={{
                   outline: "none",
                 }}
-                ref={inputRef}
+                // ref={inputRef}
                 minRows={textAreaMinRow}
                 autoFocus
                 className={cn(
@@ -92,7 +78,7 @@ export function NewPostInput({ asModal, isReply, onTweetSubmit }) {
                 placeholder={
                   isReply ? "Post your reply" : "What is happening?!"
                 }
-                // value={text}
+                value={content}
                 onChange={handleTextChange}
                 onPaste={handlePaste}
               />
@@ -129,17 +115,19 @@ export function NewPostInput({ asModal, isReply, onTweetSubmit }) {
           <div className="mt-2 -ml-2 text-xl flex flex-row justify-center items-center h-full ">
             <NewPostToolbar handleImageSelect={handleImageSelect} />
             <div className="flex flex-row h-full">
-              {text.length > 0 && <CircularProgress value={text.length} />}
+              {content.length > 0 && (
+                <CircularProgress value={content.length} />
+              )}
               <div className="hidden 2sm:block">
                 <Button
                   disabled={
-                    (text.length === 0 && images.length === 0) ||
+                    (content.length === 0 && images.length === 0) ||
                     images.length > 4 ||
-                    text.length > MAX_TWEET_LENGTH
+                    content.length > MAX_TWEET_LENGTH
                   }
                   className="ml-3"
                   type="submit"
-                  onClick={handleSubmit}
+                  onClick={() => sendPost(content, images)}
                 >
                   <span>{isReply ? "Reply" : "Post"}</span>
                 </Button>

@@ -140,7 +140,14 @@ export const usePostInteractions = () => {
   };
 
   const createMutation = useMutation({
-    mutationFn: ({ userId, content, images, replyToId, originalId }) =>
+    mutationFn: ({
+      userId,
+      content,
+      images,
+      replyToId,
+      replyToUsername,
+      originalId,
+    }) =>
       dbCreateNewPost({
         user_id: userId,
         content,
@@ -168,17 +175,23 @@ export const usePostInteractions = () => {
         content,
         images,
         replyToId,
+        replyToUsername,
         originalId,
       },
       {
-        onSuccess: async (data, { userId, replyToId }) => {
-          console.log("createSuccess ", data, replyToId);
+        onSuccess: async (data, { userId, replyToId, replyToUsername }) => {
           if (onCreateSuccess) onCreateSuccess();
 
           try {
             const newPost = await dbFetchPost({ postId: data.postId, userId });
-            console.log("CALLING THIS", newPost);
-            addPost(newPost);
+
+            console.log(newPost);
+
+            if (replyToUsername) {
+              addPost({ ...newPost, reply_to_username: replyToUsername });
+            } else {
+              addPost(newPost);
+            }
           } catch (error) {
             console.error(error);
           }

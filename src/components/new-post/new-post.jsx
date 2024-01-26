@@ -14,6 +14,8 @@ import {
 } from "../ui/dialog";
 import { Post } from "@/components/post-list/post/post";
 import { usePostInteractions } from "@/hooks/use-post-interactions";
+import { useImage } from "@/hooks/use-image";
+import { MAX_TWEET_LENGTH } from "@/utils/config";
 
 export function NewPost({
   asModal,
@@ -25,6 +27,15 @@ export function NewPost({
   const [isSending, setIsSending] = useState(false);
   const [open, setOpen] = useState(false);
 
+  const [content, setContent] = useState("");
+  const {
+    images,
+    handleImagePaste,
+    handleImageSelect,
+    resetImageStates,
+    removeImage,
+  } = useImage();
+
   if (asModal && !modalTriggerComponent) {
     throw new Error("modalTriggerComponent is required when asModal is true");
   }
@@ -35,13 +46,16 @@ export function NewPost({
 
   const { handleCreatePost } = usePostInteractions();
 
-  const sendTweet = async (content, images, resetStates) => {
+  const sendPost = async (content, images) => {
+    if (content.lenght > MAX_TWEET_LENGTH) return;
+
     setIsSending(true);
     handleCreatePost(
       {
         content,
         images,
         replyToId: parent ? parent.id : undefined,
+        replyToUsername: parent ? parent.author.username : undefined,
         originalId: parent
           ? parent.original_id
             ? parent.original_id
@@ -50,7 +64,8 @@ export function NewPost({
       },
       () => {
         setIsSending(false);
-        resetStates();
+        setContent("");
+        resetImageStates();
         if (asModal) {
           setOpen(false);
         }
@@ -71,7 +86,13 @@ export function NewPost({
       <NewPostInput
         asModal={asModal}
         isReply={isReply}
-        onTweetSubmit={sendTweet}
+        sendPost={sendPost}
+        content={content}
+        setContent={setContent}
+        images={images}
+        handleImagePaste={handleImagePaste}
+        handleImageSelect={handleImageSelect}
+        removeImage={removeImage}
       />
     </div>
   );
@@ -111,18 +132,23 @@ export function NewPost({
 
               <div className="flex-auto"></div>
 
-              {/* button grp */}
-
-              {/* <div className="flex  min-w-[56px] flex-col justify-center items-end self-stretch">
-                <div className="flex flex-row gap-3 items-center ">
-                  <Button disabled variant={"inverse"}>
+              <div className="flex min-w-14 flex-row gap-3 items-center sm:hidden">
+                {/* <Button disabled variant={"inverse"}>
                     <span>Drafts</span>
-                  </Button>
-                  <Button disabled className="ml-3">
-                    <span>Post</span>
-                  </Button>
-                </div>
-              </div> */}
+                  </Button> */}
+                <Button
+                  className="ml-3"
+                  disabled={
+                    (content.length === 0 && images.length === 0) ||
+                    images.length > 4 ||
+                    content.length > MAX_TWEET_LENGTH
+                  }
+                  type="submit"
+                  onClick={() => sendPost(content, images)}
+                >
+                  <span>{isReply ? "Reply" : "Post"}</span>
+                </Button>
+              </div>
             </div>
 
             {renderedInput}

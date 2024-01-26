@@ -1,15 +1,22 @@
 "use client";
 
+import NavItem from "@/components/navigation/nav-item";
 import AppLoading from "../../../components/ui/app-loading";
-import { NavigationSidebar } from "@/components/navigation-sidebar/navigation-sidebar";
+import { NavigationSidebar } from "@/components/navigation/navigation-sidebar";
 import { WindowContextProvider } from "@/hooks/use-window";
 import { dbFetchUserData } from "@/lib/supabase/db";
 import { useBoundStore } from "@/store/use-bound-store";
 import { cn } from "@/utils/helpers";
 import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
+import { FeatherIcon, HomeIcon } from "@/components/icons";
+import { MobileMainNavigation } from "@/components/navigation/mobile-main-navigation";
+import { NewPost } from "@/components/new-post/new-post";
+import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
 
 export default function MainLayout({ children }) {
+  const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(true);
   const { user, setUserData } = useBoundStore((state) => ({
     user: state.user,
@@ -40,6 +47,29 @@ export default function MainLayout({ children }) {
     <>
       <WindowContextProvider>
         <div className="flex min-h-screen w-full flex-auto flex-row">
+          <div className="w-full h-16  z-20 fixed bottom-0 right-0 left-0 xs:hidden bg-color-bg bg-opacity-20 backdrop-blur-sm border-t border-color-border">
+            {!pathname.startsWith("/posts") && (
+              <div className="absolute bottom-20 right-[22px] w-14 h-14 rounded-full flex items-center justify-center">
+                <NewPost
+                  asModal
+                  modalTriggerComponent={
+                    <div className=" w-full flex items-center justify-center 2xl:justify-start ">
+                      <Button className="w-14 h-14 text-white">
+                        <span className="font-color-text-main text-2xl">
+                          <FeatherIcon className="text-3xl" />
+                        </span>
+                      </Button>
+                    </div>
+                  }
+                />
+              </div>
+            )}
+
+            <div className="absolute bottom-0 w-full ">
+              <MobileMainNavigation />
+            </div>
+          </div>
+
           <header className="z-10 flex shrink-0 grow basis-auto flex-col items-end">
             <div
               className={cn(

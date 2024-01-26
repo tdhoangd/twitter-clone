@@ -3,7 +3,7 @@
 import { FeatherIcon } from "@/components/icons";
 import { Logo } from "@/components/logo";
 import NavItems from "./nav-items";
-import { UserBadge } from "@/components/navigation-sidebar/user-badge";
+import { UserBadge } from "@/components/navigation/user-badge";
 import { NewPost } from "@/components/new-post/new-post";
 import { Button } from "@/components/ui/button";
 import {

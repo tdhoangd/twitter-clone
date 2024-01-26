@@ -14,7 +14,7 @@ export default function HintTooltip({ content, sideOffset, children }) {
               "text-xs text-white font-light",
               "bg-[#666666] dark:bg-[#495A69]",
               "px-1 py-0.5 rounded-sm",
-              "z-[888]"
+              "z-50"
             )}
           >
             <span>{content}</span>

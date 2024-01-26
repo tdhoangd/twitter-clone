@@ -23,6 +23,7 @@ const PostComponent = (
   ref
 ) => {
   const router = useRouter();
+  const currentPageKey = useBoundStore((state) => state.currentPageKey);
 
   const handleClickArticle = (event) => {
     event.stopPropagation();
@@ -147,20 +148,23 @@ const PostComponent = (
 
               {/* {isReply && <div> Is reply</div>} */}
 
-              {variant === "list" && post.reply_to_id && !hasParent && (
-                <div
-                  className={cn({
-                    "mt-2": variant === "short",
-                  })}
-                >
-                  <div className="text-color-text-dimmed">
-                    Replying to
-                    <span className="text-color-accent hover:underline ml-1">
-                      {post.reply_to_username}
-                    </span>
+              {variant === "list" &&
+                post.reply_to_id &&
+                !hasParent &&
+                !currentPageKey?.startsWith("reply_") && (
+                  <div
+                    className={cn({
+                      "mt-2": variant === "short",
+                    })}
+                  >
+                    <div className="text-color-text-dimmed">
+                      Replying to
+                      <span className="text-color-accent hover:underline ml-1">
+                        {post.reply_to_username}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
 
               <div>{/* replying to, mb-2px */}</div>
 
